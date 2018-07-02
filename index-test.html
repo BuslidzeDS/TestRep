@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+<script src="planets.js"></script>	
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+	
+<div id="menu">
+</div><br>
+<table id="info">
+	
+</table>
+	
+<script>	
+showMenu(planets);
+
+function showMenu(planets) {
+    let box = $('#menu');
+    box.empty();
+    for (let planet of planets) {
+      box.append($(`<ul id="${planet.name}">${planet.name}</ul>`));
+	  $.each(planet, function(key, data){
+	  $(`#${planet.name}`).append('<li>' + key + '</li>')
+	  });
+    }
+  };
+
+
+$( function() {
+    $("#menu ul li").hide();  
+    $("#menu ul li").each(function(index){
+        $(this).parent().click(function(){ 
+            $(this).find("li").toggle()
+            });
+      })
+});
+
+</script>
+</body>
+</html>
